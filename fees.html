@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fees - Shekhawati Public School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Additional styles for fees page */
+        .fees-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .fees-info {
+            margin-bottom: 40px;
+        }
+
+        .fees-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .fees-info p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .fee-structure {
+            margin-bottom: 40px;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .fee-table th, .fee-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .fee-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .fee-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .fee-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .payment-options {
+            margin-bottom: 40px;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .payment-method i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .payment-method h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .payment-method p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .payment-method a {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method a:hover {
+            background-color: #2a75e6;
+        }
+
+        .fee-notes {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .fee-notes h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .fee-notes ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .fee-notes li {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        @media (max-width: 768px) {
+            .fee-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button id="english-btn" class="active">English</button>
+        <button id="hindi-btn">हिंदी</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Shekhawati Public School Logo">
+            <div class="school-name">
+                <h1 class="en">Shekhawati Public School</h1>
+                <h1 class="hi">शेखावटी पब्लिक स्कूल</h1>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="en">Home</a><a href="index.html" class="hi">होम</a></li>
+                <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-banner">
+        <h1 class="en">Fees</h1>
+        <h1 class="hi">शुल्क</h1>
+    </div>
+
+    <div class="fees-container">
+        <div class="fees-info">
+            <h2 class="en">Fee Structure</h2>
+            <h2 class="hi">शुल्क संरचना</h2>
+            <p class="en">Shekhawati Public School strives to provide quality education at affordable fees. Our fee structure is designed to be transparent and inclusive of most educational needs. The fees can be paid quarterly, half-yearly, or annually as per your convenience.</p>
+            <p class="hi">शेखावटी पब्लिक स्कूल किफायती शुल्क पर गुणवत्तापूर्ण शिक्षा प्रदान करने का प्रयास करता है। हमारी शुल्क संरचना पारदर्शी और अधिकांश शैक्षिक आवश्यकताओं को शामिल करने के लिए डिज़ाइन की गई है। शुल्क आपकी सुविधा के अनुसार त्रैमासिक, अर्ध-वार्षिक या वार्षिक रूप से भुगतान किया जा सकता है।</p>
+        </div>
+
+        <div class="fee-structure">
+            <h2 class="en">Academic Year 2023-24</h2>
+            <h2 class="hi">शैक्षणिक वर्ष 2023-24</h2>
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th class="en">Class</th>
+                        <th class="hi">कक्षा</th>
+                        <th class="en">Admission Fee (One Time)</th>
+                        <th class="hi">प्रवेश शुल्क (एक बार)</th>
+                        <th class="en">Annual Fee</th>
+                        <th class="hi">वार्षिक शुल्क</th>
+                        <th class="en">Quarterly Fee</th>
+                        <th class="hi">त्रैमासिक शुल्क</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nursery - KG</td>
+                        <td>₹ 10,000</td>
+                        <td>₹ 25,000</td>
+                        <td>₹ 6,500</td>
+                    </tr>
+                    <tr>
+                        <td>I - V</td>
+                        <td>₹ 15,000</td>
+                        <td>₹ 30,000</td>
+                        <td>₹ 7,800</td>
+                    </tr>
+                    <tr>
+                        <td>VI - VIII</td>
+                        <td>₹ 18,000</td>
+                        <td>₹ 35,000</td>
+                        <td>₹ 9,000</td>
+                    </tr>
+                    <tr>
+                        <td>IX - X</td>
+                        <td>₹ 20,000</td>
+                        <td>₹ 40,000</td>
+                        <td>₹ 10,500</td>
+                    </tr>
+                    <tr>
+                        <td>XI - XII (Science)</td>
+                        <td>₹ 25,000</td>
+                        <td>₹ 45,000</td>
+                        <td>₹ 12,000</td>
+                    </tr>
+                    <tr>
+                        <td>XI - XII (Commerce)</td>
+                        <td>₹ 22,000</td>
+                        <td>₹ 42,000</td>
+                        <td>₹ 11,000</td>
+                    </tr>
+                    <tr>
+                        <td>XI - XII (Arts)</td>
+                        <td>₹ 20,000</td>
+                        <td>₹ 38,000</td>
+                        <td>₹ 10,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fee-structure">
+            <h2 class="en">Additional Fees</h2>
+            <h2 class="hi">अतिरिक्त शुल्क</h2>
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th class="en">Particulars</th>
+                        <th class="hi">विवरण</th>
+                        <th class="en">Amount</th>
+                        <th class="hi">राशि</th>
+                        <th class="en">Frequency</th>
+                        <th class="hi">आवृत्ति</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="en">Transportation Fee</td>
+                        <td class="hi">परिवहन शुल्क</td>
+                        <td>₹ 8,000 - ₹ 15,000</td>
+                        <td class="en">Annual (based on distance)</td>
+                        <td class="hi">वार्षिक (दूरी के आधार पर)</td>
+                    </tr>
+                    <tr>
+                        <td class="en">Computer Lab Fee</td>
+                        <td class="hi">कंप्यूटर लैब शुल्क</td>
+                        <td>₹ 2,000</td>
+                        <td class="en">Annual</td>
+                        <td class="hi">वार्षिक</td>
+                    </tr>
+                    <tr>
+                        <td class="en">Science Lab Fee (VI-XII)</td>
+                        <td class="hi">विज्ञान प्रयोगशाला शुल्क (VI-XII)</td>
+                        <td>₹ 2,500</td>
+                        <td class="en">Annual</td>
+                        <td class="hi">वार्षिक</td>
+                    </tr>
+                    <tr>
+                        <td class="en">Sports Fee</td>
+                        <td class="hi">खेल शुल्क</td>
+                        <td>₹ 1,500</td>
+                        <td class="en">Annual</td>
+                        <td class="hi">वार्षिक</td>
+                    </tr>
+                    <tr>
+                        <td class="en">Examination Fee</td>
+                        <td class="hi">परीक्षा शुल्क</td>
+                        <td>₹ 1,000</td>
+                        <td class="en">Per Term</td>
+                        <td class="hi">प्रति सत्र</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="payment-options">
+            <h2 class="en">Payment Options</h2>
+            <h2 class="hi">भुगतान विकल्प</h2>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fas fa-globe"></i>
+                    <h3 class="en">Online Payment</h3>
+                    <h3 class="hi">ऑनलाइन भुगतान</h3>
+                    <p class="en">Pay securely through our online portal</p>
+                    <p class="hi">हमारे ऑनलाइन पोर्टल के माध्यम से सुरक्षित रूप से भुगतान करें</p>
+                    <a href="#" class="en">Pay Now</a>
+                    <a href="#" class="hi">अभी भुगतान करें</a>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-university"></i>
+                    <h3 class="en">Bank Transfer</h3>
+                    <h3 class="hi">बैंक ट्रांसफर</h3>
+                    <p class="en">Direct transfer to school account</p>
+                    <p class="hi">स्कूल खाते में सीधे ट्रांसफर</p>
+                    <a href="#" class="en">View Details</a>
+                    <a href="#" class="hi">विवरण देखें</a>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3 class="en">Cash/Cheque</h3>
+                    <h3 class="hi">नकद/चेक</h3>
+                    <p class="en">Pay at school accounts office</p>
+                    <p class="hi">स्कूल लेखा कार्यालय में भुगतान करें</p>
+                    <a href="#" class="en">Office Hours</a>
+                    <a href="#" class="hi">कार्यालय समय</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="fee-notes">
+            <h3 class="en">Important Notes</h3>
+            <h3 class="hi">महत्वपूर्ण नोट्स</h3>
+            <ul>
+                <li class="en">A late fee of ₹ 500 will be charged if fees are not paid by the due date.</li>
+                <li class="hi">यदि शुल्क नियत तारीख तक नहीं चुकाया जाता है तो ₹ 500 का विलंब शुल्क लगाया जाएगा।</li>
+                <li class="en">Sibling discount of 10% on tuition fee is available for the second child.</li>
+                <li class="hi">दूसरे बच्चे के लिए ट्यूशन फीस पर 10% का भाई-बहन छूट उपलब्ध है।</li>
+                <li class="en">Annual fees can be paid in two installments (July and December).</li>
+                <li class="hi">वार्षिक शुल्क दो किस्तों में (जुलाई और दिसंबर) में भुगतान किया जा सकता है।</li>
+                <li class="en">Fee structure is subject to revision for the next academic year.</li>
+                <li class="hi">अगले शैक्षणिक वर्ष के लिए शुल्क संरचना में संशोधन किया जा सकता है।</li>
+                <li class="en">For any fee-related queries, please contact the accounts department.</li>
+                <li class="hi">किसी भी शुल्क संबंधी प्रश्नों के लिए, कृपया लेखा विभाग से संपर्क करें।</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="en">Contact Us</h3>
+                <h3 class="hi">संपर्क करें</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span class="en">Address:</span><span class="hi">पता:</span> <span class="en">123 Education Road, Shekhawati, Rajasthan</span><span class="hi">123 शिक्षा मार्ग, शेखावटी, राजस्थान</span></p>
+                <p><i class="fas fa-phone"></i> <span class="en">Phone:</span><span class="hi">फोन:</span> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> <span class="en">Email:</span><span class="hi">ईमेल:</span> xyz@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Quick Links</h3>
+                <h3 class="hi">त्वरित लिंक</h3>
+                <ul>
+                    <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                    <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                    <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                    <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Connect With Us</h3>
+                <h3 class="hi">हमसे जुड़ें</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="en">&copy; 2023 Shekhawati Public School. All Rights Reserved.</p>
+            <p class="hi">&copy; 2023 शेखावटी पब्लिक स्कूल। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

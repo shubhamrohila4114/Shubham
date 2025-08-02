@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Shekhawati Public School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Additional styles for contact page */
+        .contact-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-intro h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #495057;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.3rem;
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .contact-text p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .office-hours {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .office-hours h3 {
+            margin-bottom: 20px;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .day {
+            font-weight: 600;
+        }
+
+        .contact-form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form-container h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-form-container h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2a75e6;
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            margin-top: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button id="english-btn" class="active">English</button>
+        <button id="hindi-btn">हिंदी</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Shekhawati Public School Logo">
+            <div class="school-name">
+                <h1 class="en">Shekhawati Public School</h1>
+                <h1 class="hi">शेखावटी पब्लिक स्कूल</h1>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="en">Home</a><a href="index.html" class="hi">होम</a></li>
+                <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-banner">
+        <h1 class="en">Contact Us</h1>
+        <h1 class="hi">संपर्क करें</h1>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-intro">
+            <h2 class="en">Get in Touch</h2>
+            <h2 class="hi">संपर्क में रहें</h2>
+            <p class="en">We're here to answer any questions you may have about our school. Reach out to us and we'll respond as soon as we can.</p>
+            <p class="hi">हम आपके स्कूल के बारे में किसी भी प्रश्न का उत्तर देने के लिए यहां हैं। हमसे संपर्क करें और हम जल्द से जल्द जवाब देंगे।</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3 class="en">Contact Information</h3>
+                <h3 class="hi">संपर्क जानकारी</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="en">Address</h4>
+                            <h4 class="hi">पता</h4>
+                            <p class="en">123 Education Road, Shekhawati, Rajasthan, India - 333001</p>
+                            <p class="hi">123 शिक्षा मार्ग, शेखावटी, राजस्थान, भारत - 333001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="en">Phone</h4>
+                            <h4 class="hi">फोन</h4>
+                            <p>+91 9876543210</p>
+                            <p>+91 9876543211</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="en">Email</h4>
+                            <h4 class="hi">ईमेल</h4>
+                            <p>xyz@gmail.com</p>
+                            <p>info@shekhawatipublicschool.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="en">Website</h4>
+                            <h4 class="hi">वेबसाइट</h4>
+                            <p>www.shekhawatipublicschool.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="office-hours">
+                    <h3 class="en">Office Hours</h3>
+                    <h3 class="hi">कार्यालय समय</h3>
+                    <ul class="hours-list">
+                        <li>
+                            <span class="day en">Monday - Friday:</span>
+                            <span class="day hi">सोमवार - शुक्रवार:</span>
+                            <span class="time">8:00 AM - 4:00 PM</span>
+                        </li>
+                        <li>
+                            <span class="day en">Saturday:</span>
+                            <span class="day hi">शनिवार:</span>
+                            <span class="time">8:00 AM - 12:00 PM</span>
+                        </li>
+                        <li>
+                            <span class="day en">Sunday:</span>
+                            <span class="day hi">रविवार:</span>
+                            <span class="time en">Closed</span>
+                            <span class="time hi">बंद</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h3 class="en">Send us a Message</h3>
+                <h3 class="hi">हमें संदेश भेजें</h3>
+                <form class="contact-form" id="contact-form" onsubmit="return validateForm('contact-form')">
+                    <div class="form-group">
+                        <label for="name" class="en">Your Name</label>
+                        <label for="name" class="hi">आपका नाम</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="en">Email Address</label>
+                        <label for="email" class="hi">ईमेल पता</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="en">Phone Number</label>
+                        <label for="phone" class="hi">फोन नंबर</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="en">Subject</label>
+                        <label for="subject" class="hi">विषय</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" class="en">Select Subject</option>
+                            <option value="" class="hi">विषय चुनें</option>
+                            <option value="admission" class="en">Admission Inquiry</option>
+                            <option value="admission" class="hi">प्रवेश पूछताछ</option>
+                            <option value="fees" class="en">Fee Related</option>
+                            <option value="fees" class="hi">शुल्क संबंधित</option>
+                            <option value="general" class="en">General Inquiry</option>
+                            <option value="general" class="hi">सामान्य पूछताछ</option>
+                            <option value="feedback" class="en">Feedback</option>
+                            <option value="feedback" class="hi">प्रतिक्रिया</option>
+                            <option value="other" class="en">Other</option>
+                            <option value="other" class="hi">अन्य</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="en">Your Message</label>
+                        <label for="message" class="hi">आपका संदेश</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn en">Send Message</button>
+                        <button type="submit" class="submit-btn hi">संदेश भेजें</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.3318087957!2d75.1389!3d26.4682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDI4JzA1LjUiTiA3NcKwMDgnMjAuMCJF!5e0!3m2!1sen!2sin!4v1623825643412!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="en">Contact Us</h3>
+                <h3 class="hi">संपर्क करें</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span class="en">Address:</span><span class="hi">पता:</span> <span class="en">123 Education Road, Shekhawati, Rajasthan</span><span class="hi">123 शिक्षा मार्ग, शेखावटी, राजस्थान</span></p>
+                <p><i class="fas fa-phone"></i> <span class="en">Phone:</span><span class="hi">फोन:</span> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> <span class="en">Email:</span><span class="hi">ईमेल:</span> xyz@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Quick Links</h3>
+                <h3 class="hi">त्वरित लिंक</h3>
+                <ul>
+                    <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                    <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                    <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                    <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Connect With Us</h3>
+                <h3 class="hi">हमसे जुड़ें</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="en">&copy; 2023 Shekhawati Public School. All Rights Reserved.</p>
+            <p class="hi">&copy; 2023 शेखावटी पब्लिक स्कूल। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

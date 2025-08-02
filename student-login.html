@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Shekhawati Public School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Additional styles for student login page */
+        .login-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .login-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .login-intro h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .login-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #495057;
+        }
+
+        .login-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .login-image {
+            text-align: center;
+        }
+
+        .login-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form-container h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .login-form-container h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .login-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .login-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .login-btn:hover {
+            background-color: #2a75e6;
+            transform: translateY(-3px);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .login-options {
+            margin-top: 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            padding-top: 20px;
+        }
+
+        .login-options p {
+            margin-bottom: 15px;
+            color: #6c757d;
+        }
+
+        .parent-login-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .parent-login-btn:hover {
+            background-color: #e9ecef;
+        }
+
+        .help-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .help-section h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .help-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .help-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .help-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .help-icon i {
+            font-size: 2rem;
+        }
+
+        .help-card h4 {
+            color: var(--dark-color);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .help-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .help-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .help-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .login-content {
+                grid-template-columns: 1fr;
+            }
+
+            .login-image {
+                display: none;
+            }
+
+            .help-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button id="english-btn" class="active">English</button>
+        <button id="hindi-btn">हिंदी</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Shekhawati Public School Logo">
+            <div class="school-name">
+                <h1 class="en">Shekhawati Public School</h1>
+                <h1 class="hi">शेखावटी पब्लिक स्कूल</h1>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="en">Home</a><a href="index.html" class="hi">होम</a></li>
+                <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-banner">
+        <h1 class="en">Student Login</h1>
+        <h1 class="hi">छात्र लॉगिन</h1>
+    </div>
+
+    <main class="container">
+        <section class="login-section">
+            <div class="login-container">
+                <div class="login-illustration">
+                    <img src="images/student-login.svg" alt="Student Login Illustration" class="login-image">
+                </div>
+                <div class="login-intro">
+                    <h2 class="en">Student Portal</h2>
+                    <h2 class="hi">छात्र पोर्टल</h2>
+                    <p class="en">Welcome to the Shekhawati Public School Student Portal. Access your academic information, assignments, grades, and more.</p>
+                    <p class="hi">शेखावटी पब्लिक स्कूल छात्र पोर्टल में आपका स्वागत है। अपनी शैक्षणिक जानकारी, असाइनमेंट, ग्रेड और अधिक तक पहुंचें।</p>
+                </div>
+
+        <div class="login-content">
+            <div class="login-image">
+                <img src="images/student-login.svg" alt="Student Login Illustration">
+            </div>
+
+            <div class="login-form-container">
+                <h3 class="en">Login to Your Account</h3>
+                <h3 class="hi">अपने खाते में लॉगिन करें</h3>
+                <form class="login-form" id="student-login-form" onsubmit="return validateForm('student-login-form')">
+                    <div class="form-group">
+                        <label for="student-id" class="en">Student ID</label>
+                        <label for="student-id" class="hi">छात्र आईडी</label>
+                        <input type="text" id="student-id" name="student-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="en">Password</label>
+                        <label for="password" class="hi">पासवर्ड</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" class="en">Forgot Password?</a>
+                        <a href="#" class="hi">पासवर्ड भूल गए?</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="login-btn en">Login</button>
+                        <button type="submit" class="login-btn hi">लॉगिन</button>
+                    </div>
+                </form>
+
+                <div class="login-options">
+                    <p class="en">Are you a parent?</p>
+                    <p class="hi">क्या आप माता-पिता हैं?</p>
+                    <a href="parent-login.html" class="parent-login-btn en">Go to Parent Login</a>
+                    <a href="parent-login.html" class="parent-login-btn hi">पेरेंट लॉगिन पर जाएं</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="help-section">
+            <h3 class="en">Need Help?</h3>
+            <h3 class="hi">मदद चाहिए?</h3>
+            <div class="help-cards">
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h4 class="en">New Student</h4>
+                    <h4 class="hi">नए छात्र</h4>
+                    <p class="en">First time logging in? You need to activate your account using your admission number and date of birth.</p>
+                    <p class="hi">पहली बार लॉगिन कर रहे हैं? आपको अपने प्रवेश संख्या और जन्मतिथि का उपयोग करके अपना खाता सक्रिय करना होगा।</p>
+                    <a href="#" class="help-link en">Activate Account</a>
+                    <a href="#" class="help-link hi">खाता सक्रिय करें</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h4 class="en">Reset Password</h4>
+                    <h4 class="hi">पासवर्ड रीसेट करें</h4>
+                    <p class="en">Forgot your password? Use our password recovery system to reset your password.</p>
+                    <p class="hi">अपना पासवर्ड भूल गए? अपना पासवर्ड रीसेट करने के लिए हमारी पासवर्ड रिकवरी सिस्टम का उपयोग करें।</p>
+                    <a href="#" class="help-link en">Reset Password</a>
+                    <a href="#" class="help-link hi">पासवर्ड रीसेट करें</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h4 class="en">Technical Support</h4>
+                    <h4 class="hi">तकनीकी सहायता</h4>
+                    <p class="en">Having trouble logging in? Contact our technical support team for assistance.</p>
+                    <p class="hi">लॉगिन करने में परेशानी हो रही है? सहायता के लिए हमारी तकनीकी सहायता टीम से संपर्क करें।</p>
+                    <a href="#" class="help-link en">Contact Support</a>
+                    <a href="#" class="help-link hi">सहायता से संपर्क करें</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="en">Contact Us</h3>
+                <h3 class="hi">संपर्क करें</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span class="en">Address:</span><span class="hi">पता:</span> <span class="en">123 Education Road, Shekhawati, Rajasthan</span><span class="hi">123 शिक्षा मार्ग, शेखावटी, राजस्थान</span></p>
+                <p><i class="fas fa-phone"></i> <span class="en">Phone:</span><span class="hi">फोन:</span> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> <span class="en">Email:</span><span class="hi">ईमेल:</span> xyz@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Quick Links</h3>
+                <h3 class="hi">त्वरित लिंक</h3>
+                <ul>
+                    <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                    <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                    <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                    <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Connect With Us</h3>
+                <h3 class="hi">हमसे जुड़ें</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="en">&copy; 2023 Shekhawati Public School. All Rights Reserved.</p>
+            <p class="hi">&copy; 2023 शेखावटी पब्लिक स्कूल। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

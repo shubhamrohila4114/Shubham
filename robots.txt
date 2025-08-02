@@ -1,0 +1,10 @@
+# robots.txt for Shekhawati Public School Website
+
+User-agent: *
+Allow: /
+
+# Disallow admin-related pages if they existed
+# Disallow: /admin/
+
+# Sitemap location (if implemented in the future)
+# Sitemap: https://www.shekhawatipublicschool.com/sitemap.xml

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities - Shekhawati Public School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Additional styles for facilities page */
+        .facilities-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .facilities-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .facilities-intro h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .facilities-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #495057;
+        }
+
+        .facility-category {
+            margin-bottom: 60px;
+        }
+
+        .facility-category h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .facility-category h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .facility-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .facility-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .facility-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .facility-card:hover .facility-image img {
+            transform: scale(1.1);
+        }
+
+        .facility-content {
+            padding: 20px;
+        }
+
+        .facility-content h3 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .facility-content p {
+            color: #6c757d;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .facility-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .facility-features li {
+            margin-bottom: 8px;
+            color: #495057;
+            display: flex;
+            align-items: center;
+        }
+
+        .facility-features li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .virtual-tour {
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+        .virtual-tour h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .virtual-tour p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #495057;
+            line-height: 1.7;
+        }
+
+        .tour-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tour-button:hover {
+            background-color: #e04d00;
+            transform: translateY(-3px);
+        }
+
+        .tour-button i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 992px) {
+            .facilities-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button id="english-btn" class="active">English</button>
+        <button id="hindi-btn">हिंदी</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Shekhawati Public School Logo">
+            <div class="school-name">
+                <h1 class="en">Shekhawati Public School</h1>
+                <h1 class="hi">शेखावटी पब्लिक स्कूल</h1>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="en">Home</a><a href="index.html" class="hi">होम</a></li>
+                <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-banner">
+        <h1 class="en">Facilities</h1>
+        <h1 class="hi">सुविधाएँ</h1>
+    </div>
+
+    <div class="facilities-container">
+        <div class="facilities-intro">
+            <h2 class="en">World-Class Facilities</h2>
+            <h2 class="hi">विश्व स्तरीय सुविधाएँ</h2>
+            <p class="en">At Shekhawati Public School, we believe in providing state-of-the-art facilities to enhance the learning experience of our students. Our campus is equipped with modern infrastructure that supports both academic excellence and extracurricular development.</p>
+            <p class="hi">शेखावटी पब्लिक स्कूल में, हम अपने छात्रों के सीखने के अनुभव को बढ़ाने के लिए अत्याधुनिक सुविधाएँ प्रदान करने में विश्वास करते हैं। हमारा परिसर आधुनिक बुनियादी ढांचे से सुसज्जित है जो शैक्षणिक उत्कृष्टता और पाठ्येतर विकास दोनों का समर्थन करता है।</p>
+        </div>
+
+        <div class="facility-category">
+            <h2 class="en">Academic Facilities</h2>
+            <h2 class="hi">शैक्षणिक सुविधाएँ</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/classroom.svg" alt="Modern Classrooms">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Modern Classrooms</h3>
+                        <h3 class="hi">आधुनिक कक्षाएँ</h3>
+                        <p class="en">Spacious, well-ventilated classrooms equipped with smart boards and modern teaching aids.</p>
+                        <p class="hi">स्मार्ट बोर्ड और आधुनिक शिक्षण सहायता से सुसज्जित विशाल, अच्छी तरह से हवादार कक्षाएँ।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Smart Interactive Boards</span><span class="hi">स्मार्ट इंटरैक्टिव बोर्ड</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Ergonomic Furniture</span><span class="hi">एर्गोनोमिक फर्नीचर</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Air-Conditioned Rooms</span><span class="hi">वातानुकूलित कमरे</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/library.svg" alt="Library">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Modern Library</h3>
+                        <h3 class="hi">आधुनिक पुस्तकालय</h3>
+                        <p class="en">A vast collection of books, journals, and digital resources to foster a love for reading and research.</p>
+                        <p class="hi">पढ़ने और अनुसंधान के लिए प्रेम को बढ़ावा देने के लिए पुस्तकों, पत्रिकाओं और डिजिटल संसाधनों का एक विशाल संग्रह।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">20,000+ Books</span><span class="hi">20,000+ पुस्तकें</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Digital Catalog System</span><span class="hi">डिजिटल कैटलॉग सिस्टम</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Reading Zones</span><span class="hi">पठन क्षेत्र</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/lab.svg" alt="Science Labs">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Science Laboratories</h3>
+                        <h3 class="hi">विज्ञान प्रयोगशालाएँ</h3>
+                        <p class="en">Well-equipped physics, chemistry, and biology labs for practical learning and experiments.</p>
+                        <p class="hi">व्यावहारिक शिक्षा और प्रयोगों के लिए अच्छी तरह से सुसज्जित भौतिकी, रसायन विज्ञान और जीव विज्ञान प्रयोगशालाएँ।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Modern Equipment</span><span class="hi">आधुनिक उपकरण</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Safety Measures</span><span class="hi">सुरक्षा उपाय</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Qualified Lab Assistants</span><span class="hi">योग्य प्रयोगशाला सहायक</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/computer.svg" alt="Computer Labs">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Computer Labs</h3>
+                        <h3 class="hi">कंप्यूटर लैब</h3>
+                        <p class="en">State-of-the-art computer labs with the latest hardware and software for digital literacy.</p>
+                        <p class="hi">डिजिटल साक्षरता के लिए नवीनतम हार्डवेयर और सॉफ्टवेयर के साथ अत्याधुनिक कंप्यूटर लैब।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">High-Speed Internet</span><span class="hi">हाई-स्पीड इंटरनेट</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Latest Software</span><span class="hi">नवीनतम सॉफ्टवेयर</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Coding Classes</span><span class="hi">कोडिंग कक्षाएँ</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="facility-category">
+            <h2 class="en">Sports Facilities</h2>
+            <h2 class="hi">खेल सुविधाएँ</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/playground.svg" alt="Playground">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Playground</h3>
+                        <h3 class="hi">खेल का मैदान</h3>
+                        <p class="en">Spacious playground for outdoor sports and activities.</p>
+                        <p class="hi">आउटडोर खेल और गतिविधियों के लिए विशाल खेल का मैदान।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Football Field</span><span class="hi">फुटबॉल मैदान</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Cricket Pitch</span><span class="hi">क्रिकेट पिच</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Athletics Track</span><span class="hi">एथलेटिक्स ट्रैक</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/indoor-sports.svg" alt="Indoor Sports">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Indoor Sports Complex</h3>
+                        <h3 class="hi">इनडोर स्पोर्ट्स कॉम्प्लेक्स</h3>
+                        <p class="en">Multi-purpose indoor sports facility for various games and activities.</p>
+                        <p class="hi">विभिन्न खेलों और गतिविधियों के लिए बहुउद्देशीय इनडोर स्पोर्ट्स सुविधा।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Badminton Courts</span><span class="hi">बैडमिंटन कोर्ट</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Table Tennis</span><span class="hi">टेबल टेनिस</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Chess and Carrom</span><span class="hi">शतरंज और कैरम</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/swimming.svg" alt="Swimming Pool">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Swimming Pool</h3>
+                        <h3 class="hi">स्विमिंग पूल</h3>
+                        <p class="en">Semi-Olympic size swimming pool with trained instructors and safety measures.</p>
+                        <p class="hi">प्रशिक्षित प्रशिक्षकों और सुरक्षा उपायों के साथ अर्ध-ओलंपिक आकार का स्विमिंग पूल।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Trained Lifeguards</span><span class="hi">प्रशिक्षित लाइफगार्ड</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Regular Swimming Classes</span><span class="hi">नियमित तैराकी कक्षाएँ</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Hygienic Maintenance</span><span class="hi">स्वच्छता रखरखाव</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="facility-category">
+            <h2 class="en">Additional Facilities</h2>
+            <h2 class="hi">अतिरिक्त सुविधाएँ</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/cafeteria.svg" alt="Cafeteria">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Cafeteria</h3>
+                        <h3 class="hi">कैफेटेरिया</h3>
+                        <p class="en">Hygienic cafeteria serving nutritious and balanced meals.</p>
+                        <p class="hi">पौष्टिक और संतुलित भोजन परोसने वाला स्वच्छ कैफेटेरिया।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Nutritious Menu</span><span class="hi">पौष्टिक मेनू</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Clean Environment</span><span class="hi">स्वच्छ वातावरण</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Dietitian Approved Meals</span><span class="hi">आहार विशेषज्ञ द्वारा अनुमोदित भोजन</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/transport.svg" alt="Transportation">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Transportation</h3>
+                        <h3 class="hi">परिवहन</h3>
+                        <p class="en">Safe and comfortable transportation service covering all major areas.</p>
+                        <p class="hi">सभी प्रमुख क्षेत्रों को कवर करने वाली सुरक्षित और आरामदायक परिवहन सेवा।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">GPS Tracked Buses</span><span class="hi">जीपीएस ट्रैक्ड बसें</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Trained Drivers</span><span class="hi">प्रशिक्षित चालक</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Bus Attendants</span><span class="hi">बस परिचारक</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/medical.svg" alt="Medical Facility">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Medical Facility</h3>
+                        <h3 class="hi">चिकित्सा सुविधा</h3>
+                        <p class="en">On-campus medical room with qualified nurse for immediate medical attention.</p>
+                        <p class="hi">तत्काल चिकित्सा ध्यान के लिए योग्य नर्स के साथ कैंपस में मेडिकल रूम।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">First Aid Services</span><span class="hi">प्राथमिक चिकित्सा सेवाएँ</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Regular Health Check-ups</span><span class="hi">नियमित स्वास्थ्य जांच</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Emergency Response Protocol</span><span class="hi">आपातकालीन प्रतिक्रिया प्रोटोकॉल</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/auditorium.svg" alt="Auditorium">
+                    </div>
+                    <div class="facility-content">
+                        <h3 class="en">Auditorium</h3>
+                        <h3 class="hi">सभागार</h3>
+                        <p class="en">Modern auditorium for school events, performances, and assemblies.</p>
+                        <p class="hi">स्कूल के कार्यक्रमों, प्रदर्शनों और सभाओं के लिए आधुनिक सभागार।</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="en">500+ Seating Capacity</span><span class="hi">500+ बैठने की क्षमता</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Advanced Sound System</span><span class="hi">उन्नत ध्वनि प्रणाली</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="en">Projection Facilities</span><span class="hi">प्रोजेक्शन सुविधाएँ</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="virtual-tour">
+            <h2 class="en">Take a Virtual Tour</h2>
+            <h2 class="hi">वर्चुअल टूर लें</h2>
+            <p class="en">Can't visit us in person? Take a virtual tour of our campus and explore our facilities from the comfort of your home.</p>
+            <p class="hi">व्यक्तिगत रूप से हमसे मिलने नहीं आ सकते? अपने घर के आराम से हमारे कैंपस का वर्चुअल टूर लें और हमारी सुविधाओं का पता लगाएं।</p>
+            <a href="#" class="tour-button en"><i class="fas fa-vr-cardboard"></i> Start Virtual Tour</a>
+            <a href="#" class="tour-button hi"><i class="fas fa-vr-cardboard"></i> वर्चुअल टूर शुरू करें</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="en">Contact Us</h3>
+                <h3 class="hi">संपर्क करें</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span class="en">Address:</span><span class="hi">पता:</span> <span class="en">123 Education Road, Shekhawati, Rajasthan</span><span class="hi">123 शिक्षा मार्ग, शेखावटी, राजस्थान</span></p>
+                <p><i class="fas fa-phone"></i> <span class="en">Phone:</span><span class="hi">फोन:</span> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> <span class="en">Email:</span><span class="hi">ईमेल:</span> xyz@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Quick Links</h3>
+                <h3 class="hi">त्वरित लिंक</h3>
+                <ul>
+                    <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                    <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                    <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                    <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Connect With Us</h3>
+                <h3 class="hi">हमसे जुड़ें</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="en">&copy; 2023 Shekhawati Public School. All Rights Reserved.</p>
+            <p class="hi">&copy; 2023 शेखावटी पब्लिक स्कूल। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

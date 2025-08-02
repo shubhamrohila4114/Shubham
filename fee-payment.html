@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payment - Shekhawati Public School</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Additional styles for fee payment page */
+        .payment-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .payment-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .payment-intro h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .payment-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #495057;
+        }
+
+        .payment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .payment-form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-form-container h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .payment-form-container h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .payment-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .payment-summary {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .payment-summary h4 {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+            font-weight: bold;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .payment-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .payment-btn:hover {
+            background-color: #2a75e6;
+            transform: translateY(-3px);
+        }
+
+        .payment-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-info h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .payment-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .payment-methods {
+            margin-bottom: 30px;
+        }
+
+        .payment-methods h4 {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .method-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .method-card {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .method-card.active {
+            border-color: var(--primary-color);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .method-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .method-name {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .payment-instructions {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .payment-instructions h4 {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .instruction-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            color: #495057;
+        }
+
+        .instruction-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .payment-note {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .payment-history {
+            margin-top: 60px;
+        }
+
+        .payment-history h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .history-table th,
+        .history-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .history-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .history-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .history-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-paid {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-failed {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .receipt-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .receipt-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .payment-content {
+                grid-template-columns: 1fr;
+            }
+
+            .method-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <button id="english-btn" class="active">English</button>
+        <button id="hindi-btn">हिंदी</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Shekhawati Public School Logo">
+            <div class="school-name">
+                <h1 class="en">Shekhawati Public School</h1>
+                <h1 class="hi">शेखावटी पब्लिक स्कूल</h1>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="en">Home</a><a href="index.html" class="hi">होम</a></li>
+                <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-banner">
+        <h1 class="en">Fee Payment</h1>
+        <h1 class="hi">शुल्क भुगतान</h1>
+    </div>
+
+    <div class="payment-container">
+        <div class="payment-intro">
+            <h2 class="en">Online Fee Payment</h2>
+            <h2 class="hi">ऑनलाइन शुल्क भुगतान</h2>
+            <p class="en">Make your fee payments quickly and securely through our online payment portal. We accept various payment methods for your convenience.</p>
+            <p class="hi">हमारे ऑनलाइन भुगतान पोर्टल के माध्यम से अपना शुल्क भुगतान जल्दी और सुरक्षित रूप से करें। हम आपकी सुविधा के लिए विभिन्न भुगतान विधियों को स्वीकार करते हैं।</p>
+        </div>
+
+        <div class="payment-content">
+            <div class="payment-form-container">
+                <h3 class="en">Make Payment</h3>
+                <h3 class="hi">भुगतान करें</h3>
+                <form class="payment-form" id="payment-form" onsubmit="return validateForm('payment-form')">
+                    <div class="form-group">
+                        <label for="student-id" class="en">Student ID</label>
+                        <label for="student-id" class="hi">छात्र आईडी</label>
+                        <input type="text" id="student-id" name="student-id" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-name" class="en">Student Name</label>
+                            <label for="student-name" class="hi">छात्र का नाम</label>
+                            <input type="text" id="student-name" name="student-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class" class="en">Class</label>
+                            <label for="class" class="hi">कक्षा</label>
+                            <select id="class" name="class" required>
+                                <option value="" class="en">Select Class</option>
+                                <option value="" class="hi">कक्षा चुनें</option>
+                                <option value="nursery" class="en">Nursery</option>
+                                <option value="nursery" class="hi">नर्सरी</option>
+                                <option value="lkg" class="en">LKG</option>
+                                <option value="lkg" class="hi">एलकेजी</option>
+                                <option value="ukg" class="en">UKG</option>
+                                <option value="ukg" class="hi">यूकेजी</option>
+                                <option value="1" class="en">Class 1</option>
+                                <option value="1" class="hi">कक्षा 1</option>
+                                <option value="2" class="en">Class 2</option>
+                                <option value="2" class="hi">कक्षा 2</option>
+                                <option value="3" class="en">Class 3</option>
+                                <option value="3" class="hi">कक्षा 3</option>
+                                <option value="4" class="en">Class 4</option>
+                                <option value="4" class="hi">कक्षा 4</option>
+                                <option value="5" class="en">Class 5</option>
+                                <option value="5" class="hi">कक्षा 5</option>
+                                <option value="6" class="en">Class 6</option>
+                                <option value="6" class="hi">कक्षा 6</option>
+                                <option value="7" class="en">Class 7</option>
+                                <option value="7" class="hi">कक्षा 7</option>
+                                <option value="8" class="en">Class 8</option>
+                                <option value="8" class="hi">कक्षा 8</option>
+                                <option value="9" class="en">Class 9</option>
+                                <option value="9" class="hi">कक्षा 9</option>
+                                <option value="10" class="en">Class 10</option>
+                                <option value="10" class="hi">कक्षा 10</option>
+                                <option value="11" class="en">Class 11</option>
+                                <option value="11" class="hi">कक्षा 11</option>
+                                <option value="12" class="en">Class 12</option>
+                                <option value="12" class="hi">कक्षा 12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fee-type" class="en">Fee Type</label>
+                        <label for="fee-type" class="hi">शुल्क प्रकार</label>
+                        <select id="fee-type" name="fee-type" required>
+                            <option value="" class="en">Select Fee Type</option>
+                            <option value="" class="hi">शुल्क प्रकार चुनें</option>
+                            <option value="tuition" class="en">Tuition Fee</option>
+                            <option value="tuition" class="hi">शिक्षण शुल्क</option>
+                            <option value="transport" class="en">Transport Fee</option>
+                            <option value="transport" class="hi">परिवहन शुल्क</option>
+                            <option value="exam" class="en">Examination Fee</option>
+                            <option value="exam" class="hi">परीक्षा शुल्क</option>
+                            <option value="library" class="en">Library Fee</option>
+                            <option value="library" class="hi">पुस्तकालय शुल्क</option>
+                            <option value="computer" class="en">Computer Lab Fee</option>
+                            <option value="computer" class="hi">कंप्यूटर लैब शुल्क</option>
+                            <option value="activity" class="en">Activity Fee</option>
+                            <option value="activity" class="hi">गतिविधि शुल्क</option>
+                            <option value="all" class="en">All Fees</option>
+                            <option value="all" class="hi">सभी शुल्क</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="month" class="en">Month</label>
+                            <label for="month" class="hi">महीना</label>
+                            <select id="month" name="month" required>
+                                <option value="" class="en">Select Month</option>
+                                <option value="" class="hi">महीना चुनें</option>
+                                <option value="april" class="en">April</option>
+                                <option value="april" class="hi">अप्रैल</option>
+                                <option value="may" class="en">May</option>
+                                <option value="may" class="hi">मई</option>
+                                <option value="june" class="en">June</option>
+                                <option value="june" class="hi">जून</option>
+                                <option value="july" class="en">July</option>
+                                <option value="july" class="hi">जुलाई</option>
+                                <option value="august" class="en">August</option>
+                                <option value="august" class="hi">अगस्त</option>
+                                <option value="september" class="en">September</option>
+                                <option value="september" class="hi">सितंबर</option>
+                                <option value="october" class="en">October</option>
+                                <option value="october" class="hi">अक्टूबर</option>
+                                <option value="november" class="en">November</option>
+                                <option value="november" class="hi">नवंबर</option>
+                                <option value="december" class="en">December</option>
+                                <option value="december" class="hi">दिसंबर</option>
+                                <option value="january" class="en">January</option>
+                                <option value="january" class="hi">जनवरी</option>
+                                <option value="february" class="en">February</option>
+                                <option value="february" class="hi">फरवरी</option>
+                                <option value="march" class="en">March</option>
+                                <option value="march" class="hi">मार्च</option>
+                                <option value="quarterly" class="en">Quarterly</option>
+                                <option value="quarterly" class="hi">त्रैमासिक</option>
+                                <option value="half-yearly" class="en">Half-Yearly</option>
+                                <option value="half-yearly" class="hi">अर्धवार्षिक</option>
+                                <option value="annual" class="en">Annual</option>
+                                <option value="annual" class="hi">वार्षिक</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="en">Amount (₹)</label>
+                            <label for="amount" class="hi">राशि (₹)</label>
+                            <input type="number" id="amount" name="amount" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="payment-summary">
+                        <h4 class="en">Payment Summary</h4>
+                        <h4 class="hi">भुगतान सारांश</h4>
+                        <div class="summary-item">
+                            <span class="en">Fee Amount</span>
+                            <span class="hi">शुल्क राशि</span>
+                            <span>₹ <span id="fee-amount">0.00</span></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="en">Convenience Fee</span>
+                            <span class="hi">सुविधा शुल्क</span>
+                            <span>₹ <span id="convenience-fee">0.00</span></span>
+                        </div>
+                        <div class="summary-total">
+                            <span class="en">Total Amount</span>
+                            <span class="hi">कुल राशि</span>
+                            <span>₹ <span id="total-amount">0.00</span></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="payment-btn en">Proceed to Payment</button>
+                        <button type="submit" class="payment-btn hi">भुगतान के लिए आगे बढ़ें</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="payment-info">
+                <h3 class="en">Payment Information</h3>
+                <h3 class="hi">भुगतान जानकारी</h3>
+                <div class="payment-methods">
+                    <h4 class="en">Payment Methods</h4>
+                    <h4 class="hi">भुगतान विधियाँ</h4>
+                    <div class="method-cards">
+                        <div class="method-card active">
+                            <div class="method-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="method-name en">Credit/Debit Card</div>
+                            <div class="method-name hi">क्रेडिट/डेबिट कार्ड</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="method-name en">Net Banking</div>
+                            <div class="method-name hi">नेट बैंकिंग</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="method-name en">UPI</div>
+                            <div class="method-name hi">यूपीआई</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-instructions">
+                    <h4 class="en">Instructions</h4>
+                    <h4 class="hi">निर्देश</h4>
+                    <ol class="instruction-list">
+                        <li class="en">Enter your student ID and verify your details.</li>
+                        <li class="hi">अपनी छात्र आईडी दर्ज करें और अपने विवरण सत्यापित करें।</li>
+                        <li class="en">Select the fee type and period for which you want to make the payment.</li>
+                        <li class="hi">शुल्क प्रकार और अवधि का चयन करें जिसके लिए आप भुगतान करना चाहते हैं।</li>
+                        <li class="en">Verify the payment amount and proceed to payment.</li>
+                        <li class="hi">भुगतान राशि सत्यापित करें और भुगतान के लिए आगे बढ़ें।</li>
+                        <li class="en">Choose your preferred payment method and complete the transaction.</li>
+                        <li class="hi">अपनी पसंदीदा भुगतान विधि चुनें और लेनदेन पूरा करें।</li>
+                        <li class="en">A receipt will be generated after successful payment which you can download or print.</li>
+                        <li class="hi">सफल भुगतान के बाद एक रसीद उत्पन्न की जाएगी जिसे आप डाउनलोड या प्रिंट कर सकते हैं।</li>
+                    </ol>
+                </div>
+
+                <div class="payment-note">
+                    <p class="en"><strong>Note:</strong> For any payment-related queries or issues, please contact the school accounts department at accounts@shekhawatipublicschool.com or call +91 9876543212.</p>
+                    <p class="hi"><strong>नोट:</strong> किसी भी भुगतान संबंधी प्रश्न या समस्या के लिए, कृपया स्कूल लेखा विभाग से accounts@shekhawatipublicschool.com पर संपर्क करें या +91 9876543212 पर कॉल करें।</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-history">
+            <h3 class="en">Recent Payment History</h3>
+            <h3 class="hi">हाल का भुगतान इतिहास</h3>
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th class="en">Date</th>
+                        <th class="hi">दिनांक</th>
+                        <th class="en">Receipt No.</th>
+                        <th class="hi">रसीद संख्या</th>
+                        <th class="en">Fee Type</th>
+                        <th class="hi">शुल्क प्रकार</th>
+                        <th class="en">Period</th>
+                        <th class="hi">अवधि</th>
+                        <th class="en">Amount</th>
+                        <th class="hi">राशि</th>
+                        <th class="en">Status</th>
+                        <th class="hi">स्थिति</th>
+                        <th class="en">Receipt</th>
+                        <th class="hi">रसीद</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15/07/2023</td>
+                        <td class="en">Tuition Fee</td>
+                        <td class="hi">शिक्षण शुल्क</td>
+                        <td>SPS23001</td>
+                        <td class="en">July 2023</td>
+                        <td class="hi">जुलाई 2023</td>
+                        <td>₹ 5,000</td>
+                        <td>
+                            <span class="status-badge status-paid en">Paid</span>
+                            <span class="status-badge status-paid hi">भुगतान किया</span>
+                        </td>
+                        <td>
+                            <a href="#" class="receipt-link en">View</a>
+                            <a href="#" class="receipt-link hi">देखें</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10/06/2023</td>
+                        <td class="en">Transport Fee</td>
+                        <td class="hi">परिवहन शुल्क</td>
+                        <td>SPS23002</td>
+                        <td class="en">June 2023</td>
+                        <td class="hi">जून 2023</td>
+                        <td>₹ 1,200</td>
+                        <td>
+                            <span class="status-badge status-paid en">Paid</span>
+                            <span class="status-badge status-paid hi">भुगतान किया</span>
+                        </td>
+                        <td>
+                            <a href="#" class="receipt-link en">View</a>
+                            <a href="#" class="receipt-link hi">देखें</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>05/06/2023</td>
+                        <td class="en">Tuition Fee</td>
+                        <td class="hi">शिक्षण शुल्क</td>
+                        <td>SPS23003</td>
+                        <td class="en">June 2023</td>
+                        <td class="hi">जून 2023</td>
+                        <td>₹ 5,000</td>
+                        <td>
+                            <span class="status-badge status-paid en">Paid</span>
+                            <span class="status-badge status-paid hi">भुगतान किया</span>
+                        </td>
+                        <td>
+                            <a href="#" class="receipt-link en">View</a>
+                            <a href="#" class="receipt-link hi">देखें</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="en">Contact Us</h3>
+                <h3 class="hi">संपर्क करें</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span class="en">Address:</span><span class="hi">पता:</span> <span class="en">123 Education Road, Shekhawati, Rajasthan</span><span class="hi">123 शिक्षा मार्ग, शेखावटी, राजस्थान</span></p>
+                <p><i class="fas fa-phone"></i> <span class="en">Phone:</span><span class="hi">फोन:</span> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> <span class="en">Email:</span><span class="hi">ईमेल:</span> xyz@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Quick Links</h3>
+                <h3 class="hi">त्वरित लिंक</h3>
+                <ul>
+                    <li><a href="admission.html" class="en">Admission</a><a href="admission.html" class="hi">प्रवेश</a></li>
+                    <li><a href="fees.html" class="en">Fees</a><a href="fees.html" class="hi">शुल्क</a></li>
+                    <li><a href="facilities.html" class="en">Facilities</a><a href="facilities.html" class="hi">सुविधाएँ</a></li>
+                    <li><a href="contact.html" class="en">Contact</a><a href="contact.html" class="hi">संपर्क</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="en">Connect With Us</h3>
+                <h3 class="hi">हमसे जुड़ें</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="en">&copy; 2023 Shekhawati Public School. All Rights Reserved.</p>
+            <p class="hi">&copy; 2023 शेखावटी पब्लिक स्कूल। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Fee calculation script
+        document.addEventListener('DOMContentLoaded', function() {
+            const amountInput = document.getElementById('amount');
+            const feeAmountSpan = document.getElementById('fee-amount');
+            const convenienceFeeSpan = document.getElementById('convenience-fee');
+            const totalAmountSpan = document.getElementById('total-amount');
+
+            function calculateFees() {
+                const amount = parseFloat(amountInput.value) || 0;
+                const convenienceFee = amount > 0 ? Math.round(amount * 0.02) : 0; // 2% convenience fee
+                const totalAmount = amount + convenienceFee;
+
+                feeAmountSpan.textContent = amount.toFixed(2);
+                convenienceFeeSpan.textContent = convenienceFee.toFixed(2);
+                totalAmountSpan.textContent = totalAmount.toFixed(2);
+            }
+
+            amountInput.addEventListener('input', calculateFees);
+
+            // Method card selection
+            const methodCards = document.querySelectorAll('.method-card');
+            methodCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    methodCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
